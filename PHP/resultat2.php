@@ -15,7 +15,7 @@ $moyenne = ($note1+$note2+$note3)/3.0;
 
 echo 'La moyenne des notes( 1, 2 et 3 ) est '.round($moyenne,2)."\n";
 
-if($moyenne < RECALE || $note1 < RECALE || $note2 < RECALE || $note3 < RECALE){
+if($moyenne < RECALE){
 	echo 'Reclé';
 }elseif($moyenne < PASSABLE){
 	echo 'Passable';	
