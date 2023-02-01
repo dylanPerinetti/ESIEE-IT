@@ -34,7 +34,10 @@ int main(int argc, char const *argv[])
 	int8_t pos_x_player = (int8_t)(rand() / (double)RAND_MAX * (MAP_X_SIZE - 1));
 	int8_t pos_y_player = (int8_t)(rand() / (double)RAND_MAX * (MAP_Y_SIZE - 1));
 
-
+	/****************************************************************************
+	
+	//		TEST PART FOR OPTION
+	
 	if(argc != 0 && argv[1][0] !='-')
 	{
 		printf("-h or -H : Option pour afficher l'aide ");
@@ -51,7 +54,7 @@ int main(int argc, char const *argv[])
 		printf("Pour quitter le jeu appuyer sur :\t%c\n",TOUCH_QUITTER );
 
 		return 2;
-	}
+	}/***************************************************************************/
 	printf("Bnjour, Veuiller choisir un caracter et appuiyer sur entree \nil seras utiliser en tant que skin pour le jeu alors choisie bien :)\n");
 	scanf("%c",&input);
 	skin = input;
