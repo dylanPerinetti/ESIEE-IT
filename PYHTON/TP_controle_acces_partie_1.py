@@ -4,7 +4,7 @@
 #Nom    : PERINETTI
 #Date   : Mer 2er fèvr.
 #heure  : 00:32
-#Code   : Controle d'acces SOLO 1 
+#Code   : Controle d'acces SOLO 1.2
 #ficname: controlAcc2.py
 #
 
