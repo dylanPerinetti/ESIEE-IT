@@ -23,7 +23,6 @@ int8_t DeplacerJoueur(char _map[MAP_X_SIZE][MAP_Y_SIZE], char _deplacement, int8
 int8_t AutoriserDeplacement(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y);						// 1 : Autoriser et 2 : Non Autoriser
 
 
-
 //MAIN
 int main(int argc, char const *argv[])
 {
@@ -72,7 +71,6 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
-
 
 void InitialiserMap(char _map[MAP_X_SIZE][MAP_Y_SIZE])
 {
@@ -151,110 +149,8 @@ int8_t DeplacerJoueur(char _map[MAP_X_SIZE][MAP_Y_SIZE], char _deplacement, int8
 	return 0;
 }
 
-
 int8_t AutoriserDeplacement(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y)
 {
 	if(_x != -1 && _y != -1 && _x != MAP_X_SIZE && _y != MAP_Y_SIZE && _map[_x][_y] == FOND_MAP)return 1;
 	return 0;	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-int main(int argc, char const *argv[])
-{
-	int user_saisi = 0;
-	int _affich_num = 1;
-
-	printf("Combien de nombres à tester :\n-->");
-	scanf("%d",&user_saisi);
-
-	printf("000--> [\t\033[31m0\033[00m\t]\n");
-
-	for (int i = 1; i < user_saisi+1; ++i)
-	{
-		printf("%.3d-->[",i);
-		if(!(i%3))
-		{
-			printf("\033[32mFizz\033[00m");
-			_affich_num = 0;
-		}
-		if(!(i%5))
-		{
-			printf("\033[33mBuzz\033[00m");
-			_affich_num = 0;
-		}
-		if(_affich_num)
-		{
-			printf("\t\033[31m%d\033[00m",i);
-		}
-		_affich_num = 1;
-
-		printf("\t]\n");
-	}
-	return 0;
-}
-
-
-
-
-#define TAB_SIZE 1
-
-void afficher_tableau(int _Tab[]);
-
-int main()
-{
-	int user_input[TAB_SIZE] = {0};
-
-	for(int i = 0; i < TAB_SIZE; ++i)
-	{
-		printf("Saisire la Valeur n %d\n",i+1);
-		scanf("%d",&user_input[i]);
-	}
-
-	afficher_tableau(user_input);
-
-	return 0;
-}
-
-
-void afficher_tableau(int _Tab[])
-{
-	int _affich_num = 1;
-
-	for(int i = 0; i < TAB_SIZE; ++i)
-	{
-		printf("[");
-		if(!(_Tab[i]%3))
-		{
-			printf("Fizz");
-			_affich_num = 0;
-		}
-		if(!(_Tab[i]%5))
-		{
-			printf("Buzz");
-			_affich_num = 0;
-		}
-		if(_affich_num)
-		{
-			printf("%d",_Tab[i]);
-		}
-		_affich_num = 1;
-		printf("\t]\n");
-	}
-}
-
-*/
