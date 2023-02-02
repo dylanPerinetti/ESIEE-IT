@@ -18,9 +18,10 @@
 void InitialiserMap(char _map[MAP_X_SIZE][MAP_Y_SIZE]);
 void AfficherMap(char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _score);
 void PlacerJoeur(char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y, char _skin);
-uint8_t LoseTest(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y);
+uint8_t LoseTest(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y, int8_t _score);
 int8_t DeplacerJoueur(char _map[MAP_X_SIZE][MAP_Y_SIZE], char _deplacement, int8_t* _x, int8_t* _y, char _skin);// 1 : Deplacement OK et 2 : Pas de Deplacelent
 int8_t AutoriserDeplacement(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y);						// 1 : Autoriser et 2 : Non Autoriser
+
 
 
 //MAIN
@@ -33,6 +34,7 @@ int main(int argc, char const *argv[])
 	int8_t score = 0;
 	int8_t pos_x_player = (int8_t)(rand() / (double)RAND_MAX * (MAP_X_SIZE - 1));
 	int8_t pos_y_player = (int8_t)(rand() / (double)RAND_MAX * (MAP_Y_SIZE - 1));
+
 
 	/****************************************************************************
 	
@@ -55,7 +57,7 @@ int main(int argc, char const *argv[])
 
 		return 2;
 	}/***************************************************************************/
-	printf("Bnjour, Veuiller choisir un caracter et appuiyer sur entree \nil seras utiliser en tant que skin pour le jeu alors choisie bien :)\n");
+printf("Bnjour, Veuiller choisir un caracter et appuiyer sur entree \nil seras utiliser en tant que skin pour le jeu alors choisie bien :)\n");
 	scanf("%c",&input);
 	skin = input;
 	InitialiserMap(map);
@@ -64,16 +66,17 @@ int main(int argc, char const *argv[])
 	do
 	{	
 		score += DeplacerJoueur(map,input,&pos_x_player,&pos_y_player,skin);
-		if(LoseTest(map, pos_x_player, pos_y_player))break;
+		if(LoseTest(map, pos_x_player, pos_y_player,score)|| score == 99)break;
 		AfficherMap(map , score);
 		fflush(stdin);
 		scanf("%c",&input);
 		system(CLEAR);
-	}while (input != TOUCH_QUITTER || score == 99);
+	}while (input != TOUCH_QUITTER);
 	printf("\tTemps : %ld seconds\n", (time(NULL) - begin));
 
 	return 0;
 }
+
 
 void InitialiserMap(char _map[MAP_X_SIZE][MAP_Y_SIZE])
 {
@@ -98,7 +101,7 @@ void AfficherMap(char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _score)
 		}
 		printf("\n");
 	}
-	if(_score != 98)printf("Score : \033[%dm%3d\033[00m\n", GREEN_COLOR,_score);
+	if(_score != 99)printf("Score : \033[%dm%3d\033[00m\n", GREEN_COLOR,_score);
 	else printf("\033[%dm  VICTOIRE !! BRAVO !!\033[00m\n", GREEN_COLOR);
 }
 
@@ -108,9 +111,9 @@ void PlacerJoeur(char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y, char _
 }
 
 
-uint8_t LoseTest(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y)
+uint8_t LoseTest(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y, int8_t _score)
 {
-	if(_map[_x-1][_y] != FOND_MAP && _map[_x+1][_y] != FOND_MAP && _map[_x][_y-1] != FOND_MAP && _map[_x][_y+1] != FOND_MAP )
+	if(_map[_x-1][_y] != FOND_MAP && _map[_x+1][_y] != FOND_MAP && _map[_x][_y-1] != FOND_MAP && _map[_x][_y+1] != FOND_MAP && _score != 99)
 		{
 			system(CLEAR);
 			printf("\033[%dm\tPERDU\n \033[00m",RED_COLOR);
@@ -151,6 +154,7 @@ int8_t DeplacerJoueur(char _map[MAP_X_SIZE][MAP_Y_SIZE], char _deplacement, int8
 	}
 	return 0;
 }
+
 
 int8_t AutoriserDeplacement(const char _map[MAP_X_SIZE][MAP_Y_SIZE], int8_t _x, int8_t _y)
 {
