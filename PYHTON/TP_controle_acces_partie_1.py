@@ -6,7 +6,7 @@
 #   Code   : Controle d'acces Securiser par sha512 2
 #   ficname: controlAcc2.py
 
-#Import des fonction dans les bibliotèques 
+#Import des fonctions dans les bibliotèques 
 from datetime import datetime
 from hashlib import sha512
 import getpass
