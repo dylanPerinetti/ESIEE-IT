@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `cinema_dylan_per`.`FILMS` (
   `titre` VARCHAR(80) NULL,
   `realisateur` VARCHAR(45) NULL,
   `genre` VARCHAR(45) NULL,
-  `date_sortie` DATE NULL,
+  `date_sortie` YEAR NULL,
   PRIMARY KEY (`idFILMS`))
 ENGINE = InnoDB;
 
